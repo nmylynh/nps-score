@@ -1,25 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Hero from "./components/hero";
+import Row from "./components/row";
+import Footer from "./components/footer"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Hero />
+      <div className="section section-bg section-ruled section-labeled label-container-outer">
+        <div className="label-container-inner">
+          <div className="label">NPS Calculator</div>
+        </div>
+        <div className="container container-nps">
+          <div className="cols">
+            <div className="wrapper">
+              <div className="nps">
+
+                <Row
+                  row={1}
+                  calculate="inputs"
+                  header="Count the responses"
+                  body="Add up the number of responses provided for each score."
+                />
+                <Row
+                  row={2}
+                  calculate="totals"
+                  header="Group the responses"
+                  body="Add up the total number of responses provided for each group."
+                />
+                <Row
+                  row={3}
+                  calculate="percentages"
+                  header="Calculate your NPS"
+                  body="Subtract the percentage of Detractors from the percentage of Promoters."
+                />
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </>
   );
 }
 
