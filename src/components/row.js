@@ -10,7 +10,7 @@ import Card from "./card";
 
 function Row(props) {
 
-  const [reset, setReset] = useState(false)
+  let [reset, setReset] = useState(false)
 
   let {
     row,
@@ -25,11 +25,13 @@ function Row(props) {
 
   useEffect(() => {
     if(reset === true){
-      props.toggleClear(clear)
+      console.log(reset)
+      props.toggleClear(reset)
       props.updatePromoters(0)
       props.updatePassives(0)
       props.updateDetractors(0)
-      setReset(false)
+      setReset(reset = !reset)
+      console.log(reset)
     }
   }, [reset])
 
@@ -56,7 +58,7 @@ function Row(props) {
         calculate={calculate}
         action={props.updatePassives}
         totalPassives={totalPassives}
-        clear={clear}
+        clear={reset}
       />
 
       <Card
@@ -66,7 +68,7 @@ function Row(props) {
         calculate={calculate}
         action={props.updateDetractors}
         totalDetractors={totalDetractors}
-        clear={clear}
+        clear={reset}
       />
     </>
   );
@@ -138,6 +140,7 @@ function Row(props) {
   }
 
   function toggle(e){
+    e.preventDefault()
     setReset(true)
   }
 
