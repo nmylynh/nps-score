@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import NavBar from './components/nav'
 import Hero from "./components/hero";
 import Row from "./components/row";
 import Footer from "./components/footer"
@@ -7,6 +8,7 @@ import Footer from "./components/footer"
 function App() {
   return (
     <>
+      <NavBar />
       <Hero />
       <div className="section section-bg section-ruled section-labeled label-container-outer">
         <div className="label-container-inner">

@@ -25,7 +25,6 @@ function Row(props) {
 
   // clears when reset is changed
   useEffect(() => {
-      console.log(reset)
       props.toggleClear(reset)
   }, [reset])
 
