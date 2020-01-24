@@ -26,10 +26,6 @@ function Row(props) {
   useEffect(() => {
       console.log(reset)
       props.toggleClear(reset)
-      props.updatePromoters(0)
-      props.updatePassives(0)
-      props.updateDetractors(0)
-      console.log(reset)
   }, [reset])
 
 

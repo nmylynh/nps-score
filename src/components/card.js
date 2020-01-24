@@ -64,7 +64,10 @@ function Card(props) {
       7: 0,
       8: 0,
       9: 0,
-      10: 0
+      10: 0,
+      promoters: 0,
+      passives: 0,
+      detractors: 0
     });
   }, [clear]);
 
