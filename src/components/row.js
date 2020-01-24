@@ -24,15 +24,12 @@ function Row(props) {
   } = props;
 
   useEffect(() => {
-    if(reset === true){
       console.log(reset)
       props.toggleClear(reset)
       props.updatePromoters(0)
       props.updatePassives(0)
       props.updateDetractors(0)
-      setReset(reset = !reset)
       console.log(reset)
-    }
   }, [reset])
 
 
@@ -48,7 +45,7 @@ function Row(props) {
         calculate={calculate}
         action={props.updatePromoters}
         totalPromoters={totalPromoters}
-        clear={reset}
+        clear={clear}
       />
 
       <Card
@@ -58,7 +55,7 @@ function Row(props) {
         calculate={calculate}
         action={props.updatePassives}
         totalPassives={totalPassives}
-        clear={reset}
+        clear={clear}
       />
 
       <Card
@@ -68,7 +65,7 @@ function Row(props) {
         calculate={calculate}
         action={props.updateDetractors}
         totalDetractors={totalDetractors}
-        clear={reset}
+        clear={clear}
       />
     </>
   );
@@ -141,7 +138,7 @@ function Row(props) {
 
   function toggle(e){
     e.preventDefault()
-    setReset(true)
+    setReset(!reset)
   }
 
   function startOver(calc) {
