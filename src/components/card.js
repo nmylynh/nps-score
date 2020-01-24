@@ -51,7 +51,7 @@ function Card(props) {
     });
   }, [totalPromoters, totalPassives, totalDetractors]);
 
-
+  // clears form
   useEffect(() => {
     setState({
       0: 0,
@@ -71,6 +71,7 @@ function Card(props) {
     });
   }, [clear]);
 
+  
   // ***CONDITIONAL ELEMENTS***
 
   // counting inputs element
