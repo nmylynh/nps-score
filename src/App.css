@@ -612,12 +612,12 @@ body {
 }
 
 .group-promoters {
-  color: green;
-  border-color:green;
+  color: #a1b800;
+  border-color: #a1b800;
 }
 
 .total .total-input-promoters:focus {
-  border-color:green;
+  border-color: #a1b800;
 }
 
 .group-passives {
@@ -662,8 +662,8 @@ body {
 }
 
 .totals-detractors {
-  right: 52px;
-  bottom: -74px;
+  right: 29px;
+  bottom: -79px;
 }
 
 .operator {
@@ -727,37 +727,45 @@ body {
 }
 
 .inputs-image-promoters {
-  width: 106px;
-  height: 74px;
-  background-size: 106px 74px;
+  width: 109px;
+  height: 81px;
+  background-size: 109px 81px;
   background-image: url(./images/green1.png);
+  background-repeat: no-repeat;
+  background-position: 1px 3px;
 }
 
 .inputs-image-passives {
-  width: 106px;
-  height: 74px;
-  background-size: 106px 74px;
+  width: 109px;
+  height: 81px;
+  background-size: 109px 81px;
   background-image: url(./images/grey1.png);
+  background-repeat: no-repeat;
+  background-position: 1px 3px;
 }
 
 .inputs-image-detractors {
-  width: 396px;
-  height: 74px;
-  background-size: 396px 74px;
+  width: 360px;
+  height: 78px;
+  background-size: 360px 78px;
   background-image: url(./images/red1.png);
+  background-repeat: no-repeat;
+  background-position: 0px 4px;
 }
 
 .totals-image-promoters {
-  width: 164px;
-  height: 74px;
-  background-size: 164px 74px;
+  width: 190px;
+  height: 80px;
+  background-size: 180px 80px;
   background-image: url(./images/green2.png);
+  background-position: -9px 4px;
+  background-repeat: no-repeat;
 }
 
 .totals-image-detractors {
-  width: 158px;
-  height: 74px;
-  background-size: 158px 74px;
+  width: 190px;
+  height: 80px;
+  background-size: 180px 80px;
   background-image: url(./images/red2.png);
 }
 
