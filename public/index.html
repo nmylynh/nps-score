@@ -2,7 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="//use.fontawesome.com/releases/v5.0.7/css/all.css"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>NPS Calculator</title>
   </head>
@@ -19,7 +24,33 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script>
+      window.addEventListener("scroll", e => {
+        const nav = document.querySelector(".navigation");
+        if (window.pageYOffset > 0) {
+          nav.classList.add("add-shadow");
+        } else {
+          nav.classList.remove("add-shadow");
+        }
+      });
+      (function($) { 
+        $(function() { 
+          $('nav ul li a:not(:only-child)').click(function(e) {
+            $(this).siblings('.nav-dropdown').toggle();
+            $('.nav-dropdown').not($(this).siblings()).hide();
+            e.stopPropagation();
+          });
+          $('html').click(function() {
+            $('.nav-dropdown').hide();
+          });
+          $('#nav-toggle').click(function() {
+            $('nav ul').slideToggle();
+          });
+          $('#nav-toggle').on('click', function() {
+            this.classList.toggle('active');
+          });
+        }); 
+      })(jQuery); 
+    </script>
   </body>
 </html>
