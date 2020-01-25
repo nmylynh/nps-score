@@ -140,7 +140,7 @@ function Row(props) {
   function startOver(calc) {
     if (calc === "percentages") {
       return (
-          <div>
+          <div className="clear">
           <a className="clear-link" href="#" onClick={toggle}>
             Start over
           </a>
