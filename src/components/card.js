@@ -162,7 +162,7 @@ function Card(props) {
     const { name, value } = evt.target;
     setState({
       ...state,
-      [name]: Number(value)
+      [name]: Number(value) ? Number(value) : 0
     });
   }
 
