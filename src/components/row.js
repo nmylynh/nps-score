@@ -152,11 +152,12 @@ function Row(props) {
 }
 
 // redux connection
-const mapStateToProps = ({ totals }) => ({
+const mapStateToProps = ({ totals, auth }) => ({
   totalPromoters: totals.totalPromoters,
   totalPassives: totals.totalPassives,
   totalDetractors: totals.totalDetractors,
-  clear: totals.clear
+  clear: totals.clear,
+  currentUser: auth.currentUser
 });
 
 export default connect(mapStateToProps, {
