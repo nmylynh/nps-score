@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { register } from "../actions";
 
 function Footer(props) {
   const [state, setState] = useState({
     email: "",
     password: ""
   });
+
+  const register = e => {
+    e.preventDefault();
+    props.register(state);
+  };
 
   return (
     <div className="section section-ruled">
@@ -40,7 +47,7 @@ function Footer(props) {
           onChange={handleChange}
         />
         <div className="button">
-          <button type="submit" id="get-started">
+          <button type="submit" id="get-started" onClick={register}>
             Get Started
           </button>
           or
@@ -66,4 +73,4 @@ function Footer(props) {
   }
 }
 
-export default Footer;
+export default connect(null, { register })(Footer);
