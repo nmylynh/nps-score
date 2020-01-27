@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function Card(props) {
+export default function Card(props) {
   // props
   let {
     start,
@@ -252,5 +252,3 @@ function Card(props) {
     }
   }
 }
-
-export default Card;
