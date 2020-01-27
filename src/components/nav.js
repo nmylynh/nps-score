@@ -84,6 +84,7 @@ function NavBar(props) {
         login={props.login}
         currentUser={props.currentUser}
         loggedIn={props.loggedIn}
+        loading={props.loading}
       />
     </>
   );
@@ -91,7 +92,8 @@ function NavBar(props) {
 
 const mapStateToProps = ({ auth }) => ({
   currentUser: auth.currentUser,
-  loggedIn: auth.loggedIn
+  loggedIn: auth.loggedIn,
+  loading: auth.loading
 });
 
 export default connect(mapStateToProps, { login, logout })(NavBar);
