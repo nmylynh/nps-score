@@ -1,5 +1,6 @@
 import React from "react";
 
+// Hero text for the app
 export default function Hero() {
   
   return (
