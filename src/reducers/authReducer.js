@@ -12,7 +12,7 @@ import jwtDecode from 'jwt-decode';
 
 const INITIAL_STATE = (token => ({
     loggedIn: false,
-    currentUser: token ? jwtDecode(token) : null,
+    currentUser: token ? jwtDecode(token) : 0,
     registerSuccess: false,
     errors: []
 }))(localStorage.getItem('jwt'))
@@ -25,7 +25,7 @@ export default function authReducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 loggedIn: false,
-                currentUser: null
+                currentUser: 0
             }
         case LOGIN_START:
             return {
