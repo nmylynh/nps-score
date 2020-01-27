@@ -9,7 +9,6 @@ import UserNps from "./components/userNPS";
 import { fetchUserNPS } from "./actions";
 
 function App(props) {
-
   // load user's nps data
   useEffect(() => {
     if (props.currentUser) {
