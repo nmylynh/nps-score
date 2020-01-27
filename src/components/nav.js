@@ -3,6 +3,7 @@ import Modal from "./modal";
 import { connect } from "react-redux";
 import { login, logout } from "../actions";
 
+// Navbar for the app
 function NavBar(props) {
   const [show, setShow] = useState(false);
 
