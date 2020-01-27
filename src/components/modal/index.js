@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./styles.css";
 import { RotateCircleLoading } from "react-loadingg";
 
+// the login modal--I wasn't going to implement react router because I wanted a quick option
 export default function Modal({
   handleClose,
   show,
