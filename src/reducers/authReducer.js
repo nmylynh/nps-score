@@ -14,6 +14,7 @@ const INITIAL_STATE = (token => ({
   loggedIn: false,
   currentUser: token ? jwtDecode(token) : 0,
   registerSuccess: false,
+  loading: false,
   errors: []
 }))(localStorage.getItem("jwt"));
 
@@ -29,34 +30,40 @@ export default function authReducer(state = INITIAL_STATE, action) {
     case LOGIN_START:
       return {
         ...state,
-        loggedIn: false
+        loggedIn: false,
+        loading: true
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
         loggedIn: true,
-        currentUser: action.payload
+        currentUser: action.payload,
+        loading: false
       };
     case LOGIN_FAILURE:
       return {
         ...state,
         loggedIn: false,
-        errors: action.payload
+        errors: action.payload,
+        loading: false
       };
     case REGISTER_START:
       return {
-        ...state
+        ...state,
+        loading: true
       };
     case REGISTER_SUCCESS:
       return {
         ...state,
         errors: null,
-        registerSuccess: true
+        registerSuccess: true,
+        loading: false
       };
     case REGISTER_FAILURE:
       return {
         ...state,
-        errors: action.payload
+        errors: action.payload,
+        loading: false
       };
     default:
       return state;
