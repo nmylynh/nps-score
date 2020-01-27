@@ -807,6 +807,7 @@ nav ul li ul li a {
 }
 
 .clear {
+  display: block;
   padding-top: 1rem;
 }
 @media only screen and (max-width: 850px) {
@@ -893,8 +894,8 @@ nav ul li ul li a {
   background-image: url(./images/red2.png);
 }
 
-
 /* Footer styling */
+
 
 .heading {
   text-align: left;
@@ -927,6 +928,41 @@ nav ul li ul li a {
     display: flex;
     justify-content: center;
   }
+}
+
+.container-social {
+  padding-top: 3rem;
+  text-align: center;
+}
+
+.social [class*="fab fa-"] {
+  background-color: #333;
+  border-radius: 30px;
+  color: #fff;
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  margin: auto 3px;
+  width: 30px;
+  font-size: 15px;
+  text-align: center;
+}
+
+.fa-twitter:hover,
+.fa-facebook-f:hover {
+  background-color: #46c0fb;
+}
+
+.send-nps{
+  margin: 0.2rem;
+}
+.submit{
+  background-color: #8867cd;
+  color: #fff;
+  font-weight: 600;
+}
+.submit:hover{
+  background-color: #46c0fb;
 }
 
 #email,
@@ -978,5 +1014,57 @@ nav ul li ul li a {
   #get-started,
   #google {
     border-radius: 50px;
+  }
+}
+
+.fade-in {
+  animation: fadeIn ease 0.4s;
+  -webkit-animation: fadeIn ease 0.4s;
+  -moz-animation: fadeIn ease 0.4s;
+  -o-animation: fadeIn ease 0.4s;
+  -ms-animation: fadeIn ease 0.4s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
