@@ -6,13 +6,13 @@ import {
   AccordionItemButton,
   AccordionItemPanel
 } from "react-accessible-accordion";
-import 'react-accessible-accordion/dist/fancy-example.css';
+import "react-accessible-accordion/dist/fancy-example.css";
 
 // renders the user's nps
 function UserNPS(props) {
-
   const { userNPS } = props;
 
+  // accordion component for each nps data in the API response, very little styling because honestly I'm just showing functionality
   const npsList = userNPS.map(nps => (
     <AccordionItem key={nps.id}>
       <AccordionItemHeading>
@@ -43,7 +43,7 @@ function UserNPS(props) {
         </div>
       </div>
 
-      <Accordion>{npsList ? npsList : null}</Accordion>
+      <Accordion>{npsList}</Accordion>
     </div>
   );
   function formatDate(date) {
