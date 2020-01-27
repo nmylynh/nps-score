@@ -14,12 +14,14 @@ function Footer(props) {
 
   let { totalPromoters, totalPassives, totalDetractors } = props.totals;
 
+  // on register success, give a success message
   useEffect(() => {
     if (props.registerSuccess) {
       window.confirm("Thanks! You've successfully registered.");
     }
   }, [props.registerSuccess]);
 
+  // calculates the nps to send to the API
   const sumOfAllTypes = totalPromoters + totalPassives + totalDetractors;
   const calcNps = () =>
     Math.round(
@@ -27,11 +29,13 @@ function Footer(props) {
         (totalPromoters / sumOfAllTypes) * 100
     );
 
+  // sends email and password to the server to register
   const register = e => {
     e.preventDefault();
     props.register({ username: state.username, password: state.password });
   };
 
+  // sends the current nps data to the API, and refetches user nps data
   const saveNps = e => {
     e.preventDefault();
     let npsObj = {
@@ -51,6 +55,7 @@ function Footer(props) {
     props.fetchUserNPS(props.currentUser.subject);
   };
 
+  // renders the nps save option if a user is logged in
   const dashboard = (
     <form className="form" onSubmit={saveNps}>
       <input
@@ -77,6 +82,7 @@ function Footer(props) {
     </form>
   );
 
+  // renders sign up if a user isn't logged in
   const signUp = (
     <form className="form" onSubmit={register}>
       <input
