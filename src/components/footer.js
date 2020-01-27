@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { register, addNPS } from "../actions";
+import { register, addNPS, fetchUserNPS } from "../actions";
 
+// footer with the sign up and share buttons, renders differently if signed in or not
 function Footer(props) {
   const [state, setState] = useState({
     username: "",
@@ -14,10 +15,10 @@ function Footer(props) {
   let { totalPromoters, totalPassives, totalDetractors } = props.totals;
 
   useEffect(() => {
-    if(props.registerSuccess){
-      window.confirm("Thanks! You've successfully registered.")
-    } 
-  }, [props.registerSuccess])
+    if (props.registerSuccess) {
+      window.confirm("Thanks! You've successfully registered.");
+    }
+  }, [props.registerSuccess]);
 
   const sumOfAllTypes = totalPromoters + totalPassives + totalDetractors;
   const calcNps = () =>
@@ -29,7 +30,6 @@ function Footer(props) {
   const register = e => {
     e.preventDefault();
     props.register({ username: state.username, password: state.password });
-
   };
 
   const saveNps = e => {
@@ -42,12 +42,13 @@ function Footer(props) {
       total_passives: totalPassives,
       total_detractors: totalDetractors,
       nps_score: calcNps() ? calcNps() : 0
-    }
+    };
     props.addNPS(npsObj);
     setState({
-      name: '',
-      description:''
-    })
+      name: "",
+      description: ""
+    });
+    props.fetchUserNPS(props.currentUser.subject);
   };
 
   const dashboard = (
@@ -73,8 +74,6 @@ function Footer(props) {
           Submit
         </button>
       </div>
-
-
     </form>
   );
 
@@ -114,11 +113,10 @@ function Footer(props) {
         <div className="cols">
           <div className="wrapper">
             <div className="heading">
-              <h2>{
-                    props.currentUser 
-                    ? "Would you like to save your current NPS information?" 
-                    : "Interested in improving your customer experience with NPS?"
-                  }
+              <h2>
+                {props.currentUser
+                  ? "Would you like to save your current NPS information?"
+                  : "Interested in improving your customer experience with NPS?"}
               </h2>
             </div>
           </div>
@@ -129,13 +127,8 @@ function Footer(props) {
 
       <div className="container container-social">
         <div className="social">
-          <a className="fab fa-twitter" title="" target="_blank" href="#"></a>
-          <a
-            className="fab fa-facebook-f"
-            title=""
-            target="_blank"
-            href="#"
-          ></a>
+          <a className="fab fa-twitter" href="#"></a>
+          <a className="fab fa-facebook-f" href="#"></a>
         </div>
       </div>
     </div>
@@ -157,4 +150,6 @@ const mapStateToProps = ({ totals, auth }) => ({
   currentUser: auth.currentUser
 });
 
-export default connect(mapStateToProps, { register, addNPS })(Footer);
+export default connect(mapStateToProps, { register, addNPS, fetchUserNPS })(
+  Footer
+);
