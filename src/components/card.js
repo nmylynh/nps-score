@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+// Renders each card of the calculator dependent on the props
 export default function Card(props) {
   // props
   let {
