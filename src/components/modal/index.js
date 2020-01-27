@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
+import { RotateCircleLoading } from "react-loadingg";
 
 export default function Modal({
   handleClose,
   show,
   login,
   currentUser,
-  loggedIn
+  loggedIn,
+  loading
 }) {
   const [state, setState] = useState({
     username: "",
@@ -15,7 +17,6 @@ export default function Modal({
 
   useEffect(() => {
     if (loggedIn) {
-      window.confirm("Thanks! You've logged in.");
       handleClose();
     }
   }, [currentUser]);
@@ -31,40 +32,44 @@ export default function Modal({
   return (
     <div className={showHideClassName}>
       <section className="modal-main fade-in">
-        <form className="form" onSubmit={handleSubmit}>
-          <div className="form-login">
-            <input
-              name="username"
-              type="email"
-              value={state.username}
-              placeholder="Your email address"
-              onChange={handleChange}
-              className="form modal-items"
-            />
-            <input
-              name="password"
-              type="password"
-              value={state.password}
-              placeholder="Choose a password"
-              onChange={handleChange}
-              className="form modal-items"
-            />
+        {loading ? (
+          <RotateCircleLoading />
+        ) : (
+          <form className="form" onSubmit={handleSubmit}>
+            <div className="form-login">
+              <input
+                name="username"
+                type="email"
+                value={state.username}
+                placeholder="Your email address"
+                onChange={handleChange}
+                className="form modal-items"
+              />
+              <input
+                name="password"
+                type="password"
+                value={state.password}
+                placeholder="Choose a password"
+                onChange={handleChange}
+                className="form modal-items"
+              />
 
+              <button
+                type="submit"
+                onClick={handleSubmit}
+                className="submit form modal-items"
+              >
+                Login
+              </button>
+            </div>
             <button
-              type="submit"
-              onClick={handleSubmit}
-              className="submit form modal-items"
+              className="form modal-items close submit"
+              onClick={handleClose}
             >
-              Login
+              Close
             </button>
-          </div>
-          <button
-            className="form modal-items close submit"
-            onClick={handleClose}
-          >
-            Close
-          </button>
-        </form>
+          </form>
+        )}
       </section>
     </div>
   );
