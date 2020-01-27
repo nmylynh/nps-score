@@ -8,6 +8,7 @@ import {
 import { connect } from "react-redux";
 import Card from "./card";
 
+// renders each row of the nps calculator dependent on the props
 function Row(props) {
 
   let [reset, setReset] = useState(false)
