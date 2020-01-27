@@ -964,7 +964,9 @@ nav ul li ul li a {
 .submit:hover{
   background-color: #46c0fb;
 }
-
+.projects-section{
+  border-bottom: none;
+}
 #email,
 #password {
   min-width: 120px;
@@ -1017,6 +1019,7 @@ nav ul li ul li a {
   }
 }
 
+/* Fading animation */
 .fade-in {
   animation: fadeIn ease 0.4s;
   -webkit-animation: fadeIn ease 0.4s;
