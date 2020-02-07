@@ -12,29 +12,29 @@ const initialState = {
   clear: false
 };
 
-const totalsReducer = (state = initialState, action) => {
-  switch (action.type) {
+const totalsReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
     case UPDATE_PROMOTERS:
       return {
         ...state,
-        totalPromoters: action.payload
+        totalPromoters: payload
       };
 
     case UPDATE_PASSIVES:
       return {
         ...state,
-        totalPassives: action.payload
+        totalPassives: payload
       };
 
     case UPDATE_DETRACTORS:
       return {
         ...state,
-        totalDetractors: action.payload
+        totalDetractors: payload
       };
     case CLEAR_FORM:
       return {
         ...state,
-        clear: action.payload
+        clear: payload
       };
     default:
       return state;
