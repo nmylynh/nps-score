@@ -18,8 +18,8 @@ const INITIAL_STATE = (token => ({
   errors: []
 }))(localStorage.getItem("jwt"));
 
-export default function authReducer(state = INITIAL_STATE, action) {
-  switch (action.type) {
+export default function authReducer(state = INITIAL_STATE, { type, payload }) {
+  switch (type) {
     case LOGOUT_USER:
       localStorage.removeItem("jwt");
       return {
@@ -37,14 +37,14 @@ export default function authReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         loggedIn: true,
-        currentUser: action.payload,
+        currentUser: payload,
         loading: false
       };
     case LOGIN_FAILURE:
       return {
         ...state,
         loggedIn: false,
-        errors: action.payload,
+        errors: payload,
         loading: false
       };
     case REGISTER_START:
@@ -62,7 +62,7 @@ export default function authReducer(state = INITIAL_STATE, action) {
     case REGISTER_FAILURE:
       return {
         ...state,
-        errors: action.payload,
+        errors: payload,
         loading: false
       };
     default:
