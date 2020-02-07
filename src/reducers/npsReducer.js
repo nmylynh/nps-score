@@ -23,8 +23,8 @@ const INITIAL_STATE = {
 };
 
 // CRUD operations that work but ATM not implemented
-export default function NPSReducer(state = INITIAL_STATE, action) {
-  switch (action.type) {
+export default function NPSReducer(state = INITIAL_STATE, { type, payload }) {
+  switch (type) {
     case FETCH_USER_NPS_START:
       return {
         ...state
@@ -32,12 +32,12 @@ export default function NPSReducer(state = INITIAL_STATE, action) {
     case FETCH_USER_NPS_SUCCESS:
       return {
         ...state,
-        userNPS: action.payload
+        userNPS: payload
       };
     case FETCH_USER_NPS_FAILURE:
       return {
         ...state,
-        errors: action.payload
+        errors: payload
       };
     case FETCH_NPS_START:
       return {
@@ -48,13 +48,13 @@ export default function NPSReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         fetching: false,
-        NPS: action.payload
+        NPS: payload
       };
     case FETCH_NPS_FAILURE:
       return {
         ...state,
         fetching: false,
-        errors: action.payload
+        errors: payload
       };
     case ADD_NPS_START:
       return {
@@ -67,7 +67,7 @@ export default function NPSReducer(state = INITIAL_STATE, action) {
     case ADD_NPS_FAILURE:
       return {
         ...state,
-        errors: action.payload
+        errors: payload
       };
     case UPDATE_NPS_START:
       return {
@@ -75,16 +75,16 @@ export default function NPSReducer(state = INITIAL_STATE, action) {
       };
     case UPDATE_NPS_SUCCESS:
       const filtered = state.nps.filter(e => {
-        return e.id !== action.payload.id;
+        return e.id !== payload.id;
       });
       return {
         ...state,
-        nps: [action.payload, ...filtered]
+        nps: [payload, ...filtered]
       };
     case UPDATE_NPS_FAILURE:
       return {
         ...state,
-        errors: action.payload
+        errors: payload
       };
     case DELETE_NPS_START:
       return {
@@ -93,7 +93,7 @@ export default function NPSReducer(state = INITIAL_STATE, action) {
     case DELETE_NPS_SUCCESS:
       const { nps } = state;
       const filteredNPS = nps.filter(e => {
-        return e.id !== action.payload;
+        return e.id !== payload;
       });
       return {
         ...state,
@@ -102,7 +102,7 @@ export default function NPSReducer(state = INITIAL_STATE, action) {
     case DELETE_NPS_FAILURE:
       return {
         ...state,
-        errors: action.payload
+        errors: payload
       };
     default:
       return state;
