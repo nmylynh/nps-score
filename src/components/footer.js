@@ -9,7 +9,6 @@ function Footer(props) {
     password: "",
     name: "",
     description: "",
-    user_id: props.currentUser.subject
   });
 
   let { totalPromoters, totalPassives, totalDetractors } = props.totals;
@@ -37,11 +36,12 @@ function Footer(props) {
 
   // sends the current nps data to the API, and refetches user nps data
   const saveNps = e => {
+    const id = props.currentUser.subject
     e.preventDefault();
     let npsObj = {
       name: state.name,
       description: state.description,
-      user_id: state.user_id,
+      user_id: id ? id : null,
       total_promoters: totalPromoters,
       total_passives: totalPassives,
       total_detractors: totalDetractors,
