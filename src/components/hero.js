@@ -1,6 +1,8 @@
 import React from "react";
 
-function Hero() {
+// Hero text for the app
+export default function Hero() {
+  
   return (
     <>
       <div className="section section-hero hero-container">
@@ -30,5 +32,3 @@ function Hero() {
     </>
   );
 }
-
-export default Hero;

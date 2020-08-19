@@ -8,9 +8,10 @@ import {
 import { connect } from "react-redux";
 import Card from "./card";
 
+// renders each row of the nps calculator dependent on the props
 function Row(props) {
 
-  const [reset, setReset] = useState(false)
+  let [reset, setReset] = useState(false)
 
   let {
     row,
@@ -23,14 +24,9 @@ function Row(props) {
     clear
   } = props;
 
+  // clears when reset is changed
   useEffect(() => {
-    if(reset === true){
-      props.toggleClear(clear)
-      props.updatePromoters(0)
-      props.updatePassives(0)
-      props.updateDetractors(0)
-      setReset(false)
-    }
+      props.toggleClear(reset)
   }, [reset])
 
 
@@ -46,7 +42,7 @@ function Row(props) {
         calculate={calculate}
         action={props.updatePromoters}
         totalPromoters={totalPromoters}
-        clear={reset}
+        clear={clear}
       />
 
       <Card
@@ -138,17 +134,18 @@ function Row(props) {
   }
 
   function toggle(e){
-    setReset(true)
+    e.preventDefault()
+    setReset(!reset)
   }
 
   function startOver(calc) {
     if (calc === "percentages") {
       return (
-          <div>
+          <strong className="clear">
           <a className="clear-link" href="#" onClick={toggle}>
             Start over
           </a>
-          </div>
+          </strong>
         
       );
     }
@@ -156,11 +153,12 @@ function Row(props) {
 }
 
 // redux connection
-const mapStateToProps = ({ totals }) => ({
+const mapStateToProps = ({ totals, auth }) => ({
   totalPromoters: totals.totalPromoters,
   totalPassives: totals.totalPassives,
   totalDetractors: totals.totalDetractors,
-  clear: totals.clear
+  clear: totals.clear,
+  currentUser: auth.currentUser
 });
 
 export default connect(mapStateToProps, {

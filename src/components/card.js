@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-function Card(props) {
+// Renders each card of the calculator dependent on the props
+export default function Card(props) {
   // props
   let {
     start,
@@ -11,7 +12,7 @@ function Card(props) {
     totalPromoters,
     totalPassives,
     totalDetractors, 
-    reset
+    clear
   } = props;
 
   // local state
@@ -51,7 +52,27 @@ function Card(props) {
     });
   }, [totalPromoters, totalPassives, totalDetractors]);
 
+  // clears form
+  useEffect(() => {
+    setState({
+      0: 0,
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0,
+      6: 0,
+      7: 0,
+      8: 0,
+      9: 0,
+      10: 0,
+      promoters: 0,
+      passives: 0,
+      detractors: 0
+    });
+  }, [clear]);
 
+  
   // ***CONDITIONAL ELEMENTS***
 
   // counting inputs element
@@ -142,7 +163,7 @@ function Card(props) {
     const { name, value } = evt.target;
     setState({
       ...state,
-      [name]: Number(value)
+      [name]: Number(value) ? Number(value) : 0
     });
   }
 
@@ -232,5 +253,3 @@ function Card(props) {
     }
   }
 }
-
-export default Card;
